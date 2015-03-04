@@ -92,7 +92,7 @@ class Paragraphr {
 			if ($output == 'html') {
 				$par = '<p>'.$this->sanitize_input($arr['intro']).' '.$this->sanitize_input($arr['pbody']).'</p>';
 			} else if ($output == 'text') {
-				$par = $arr['intro'].' '.$arr['pbody']."\n\n";
+				$par = $arr['intro'].' '.$arr['pbody']."\r\n\r\n";
 			}
 			$doc .= $par;
 		}

@@ -70,7 +70,6 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 	 */
 	var editScreenBindings = function() {
 		$('.show-hide').click(function(){
-			console.log("here");
 			$(this).closest('.par-intro').siblings('.par-body').toggle();
 			if ($(this).closest('.par-intro').siblings('.par-body').is(":visible")) {
 				$(this).removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up");
@@ -79,11 +78,11 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 			}
 		});
 		$('#i-colors div').click(function(){
-			console.log("clicked");
 			$('#i-colors div').removeClass('active-color');
 			$(this).addClass('active-color');
-			var color = $(this).css('background');
+			var color = $(this).css('background-color');
 			$('.par-intro').css('background', color);
+			$('.par-intro textarea').css('background', color); // for IE
 			console.log("color is: " + color);
 		});
 	};
@@ -92,9 +91,7 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 	 */
 	 var shareScreenBindings = function() {
 	 	var url = (doc.urlID) ? doc.urlID : (window.location.href).slice(-5,-1);
-	 	console.log(url);
 	 	$('#click-dl').click(function(){
-	 		console.log("clicked");
 	 		$.ajax({
 				type: 'POST',
 				data: ({textfile:url}),
@@ -124,6 +121,7 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 			$("#writing-area").removeClass("focused").addClass("normal");
 			var leftOver = $("#writing-doc").val();
 			if (leftOver) doc.txt += (leftOver + "\n\n");
+			doc.txt = (doc.txt).replace(/\n{3,}/g,"\n\n");
 			$("#writing-doc").focus().val(doc.txt);
 		} else {
 			$("#writing-area").removeClass("normal").addClass("focused");
@@ -132,7 +130,6 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 			doc.txt = (doc.txt).replace(/\n{3,}/g,"\n\n");
 			$("#writing-doc").val("").focus().keypress(function(e){
 	  			if (settings.mode == 'focused' && 13 == e.keyCode) {
-	  				console.log("here");
 	  				doc.txt += $(this).val() + "\n\n";
 	  				$(this).val("");
 	  				return false;
@@ -217,8 +214,8 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 	 */
 	var assembleParagraphs = function() {
 		addParagraphs();
-		$('textarea').css({'font-size': settings.fontSize, 'font-family': settings.font}).height(settings.fontSize); // textarea size plugin
-		$('textarea').autosize({append: false});
+		$('textarea').css({'font-size': settings.fontSize, 'font-family': settings.font, 'height': '1px'});
+		$('textarea').autosize({append: false}); // textarea size plugin 
 		$("#writing-area").sortable({
 			placeholder: "sortable-placeholder",
 			tolerance: "pointer",
@@ -296,7 +293,7 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 	var htmlifyParagraph = function(par) {
 		var txt = '<div class="par-edit"><div class="par-intro"><textarea class="intro-sen text-font">';
 		txt += par.intro;
-		txt += '</textarea><div class="intro-icon"><i class="fa fa-chevron-circle-up fa-lg show-hide"></i><i class="fa fa-arrows fa-lg drag"></i></div></div><textarea class="par-body text-font">';
+		txt += '</textarea><div class="intro-icon"><i class="fa fa-chevron-circle-up fa-lg show-hide"></i><i class="fa fa-arrows fa-lg drag"></i></div></div><textarea class="par-body text-font" placeholder="[Body]">';
 		txt += par.pbody;
 		txt += 	'</textarea></div>';
 		return txt;
@@ -324,7 +321,6 @@ var Paragraphr = (/** @lends module:paragraphr */ function() {
 	var init = (function() {
 		allScreensBindings();
 		if ($("#writing-area").hasClass("writing")) {
-			console.log(window.location.href);
 			$('textarea').autosize({append: false}); // textarea resize plugin
 			writeScreenBindings();
 		} else {
