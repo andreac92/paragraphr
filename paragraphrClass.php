@@ -13,7 +13,7 @@ class Paragraphr {
 	private $json_dir = 'paragraphr-app/json/';
 	private $dl_dir = 'wp-content/uploads/files_DL/';
 
-	public function Paragraphr($len=4){
+	function __construct($len=4){
 		$this->urlLen = $len;
 	}
 	/**

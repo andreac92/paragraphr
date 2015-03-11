@@ -28,6 +28,7 @@ if ($url = $wp_query->query_vars['url']){
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="http://andrea-campos.com/wp-content/themes/personal-site/jquery.ui.touch-punch.min.js"></script>
 <script src="http://andrea-campos.com/wp-content/themes/personal-site/jquery.autosize.min.js"></script>
 </head>
 <body>
