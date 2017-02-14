@@ -7,7 +7,7 @@ If you choose **Focused view**, what you have written disappears from the screen
 Once you're done, click **I'm ready to edit**.
 
 On the edit screen, your work has been separated into paragraph units. You can rearrange their order, as well as edit the text. Your introductory sentence has been highlighted for each paragraph. This brings attention to your work in two ways:
-* Introductory sentences should more or less describe what your paragraph will be about. Can you determine a paragraph's content on the introduction?
+* Introductory sentences should more or less describe what your paragraph will be about. Can you determine a paragraph's content based on the introduction?
 * Introductory sentences should more or less guide the flow of your work. Hide the content of each paragraph by clicking the up arrow. Do your introduction sentences present ideas that flow into the next and build a coherent argument?
 
 You can also modify the font, font size and introductory sentence highlight color.
